@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduGhsot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Source+Code+Pro:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+    <div class="terminal w-100 h-12 p-4 mb-4 flex items-center">
+      <span class="text-green-400 preview-text">Ініціалізація EduGhost...</span>
+    </div>
+    <div class="bg-gray-800 rounded-full h-2.5 container-progressbar">
+      <div id="progress-bar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" class="opacity-0 transition-opacity duration-500">
+    <!-- Hero Section -->
+    <header
+      class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center bg-gradient-to-b from-black to-gray-900 overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full opacity-20">
+        <div class="absolute top-0 left-0 w-full h-full bg-repeat"
+          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMGZmMjkiPjwvcmVjdD4KPC9zdmc+');">
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto">
+
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text hacker-font">
+          <span class="typewriter block">EduGhost</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          EduGhost — неведимка для онлайн-навчання, створений, щоб повністю автоматизувати відвідування
+          занять.
+          <span class="text-green-400"> Додаток самостійно приєднується до уроків у Zoom та фіксує Вашу
+            присутність у PNS.</span>
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <a href="#downloads"
+            class="download-btn bg-green-600 hover:bg-green-700 text-black font-bold py-3 px-6 rounded-full glow-box pulse">
+            <i class="fas fa-download mr-2"></i> Завантажити
+          </a>
+          <a href="#features"
+            class="download-btn border-2 border-green-500 hover:bg-green-900/30 text-green-400 font-bold py-3 px-6 rounded-full">
+            <i class="fas fa-terminal mr-2"></i> Оглянути функції
+          </a>
+        </div>
+      </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <i class="fas fa-chevron-down text-green-400 text-2xl"></i>
+  </div>
+  </header>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-4 bg-gray-900">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center hacker-font glow-text">
+        <span class="border-b-2 border-green-500 pb-2">Основні функціх</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="terminal p-6 h-full">
+          <div class="text-green-400 text-4xl mb-4">
+            <i class="fas fa-highlighter"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 hacker-font">Відмітка присутності</h3>
+          <p class="text-gray-300">
+            Поставить відмітку про присутність на парі на пнс
+          </p>
+        </div>
+
+        <div class="terminal p-6 h-full">
+          <div class="text-green-400 text-4xl mb-4">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 hacker-font">Zoom</h3>
+          <p class="text-gray-300">
+            Підключається до Zoom конференції під Вашим ім'ям згідно Вашому розкладу
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructions Section -->
+  <section class="py-20 px-4 bg-black">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
+        <span class="border-b-2 border-green-500 pb-2">Інструкція з експлуатації</span>
+      </h2>
+
+      <div class="terminal p-6 mb-8">
+        <div class="space-y-4">
+          <div class="accordion-item">
+            <span class="text-green-400">> Завантажити та встановити останню версію браузера FireFox</span>
+            <div class="accordion-content">
+              <p class="text-gray-300 ml-4">- ОБОВ`ЯЗКОВО необхідно завантажити саме цей браузер, без нього не буде
+                працювати програма <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"
+                  rel="noopener noreferrer" style="text-decoration:underline; color:#00ff41">Firefox</a>
+                
+                <div class="ml-4 text-yellow-400"><i class="fas fa-exclamation-triangle mr-2"></i>
+                  Рекомендовано одразу прибрати автоматичне оновлення для Firefox, оскільки воно може заважати працювати
+                  роботі скрипту
+                </div>
+                
+                <br>
+              </p>
+              <p style="font-style:italic;" class="text-gray-300 ml-4">
+
+                <b>Firefox</b> потрібен виключно як встановлений застосунок, подальша робота буде виконуватися в
+                браузері, який вам зручний
+              </p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <span class="text-green-400">> Завантажити та налаштувати останню версію Zoom</span>
+            <div class="accordion-content">
+              <p class="text-gray-300 ml-4">- Необхідно завантажити додаток <a href="https://zoom.us/ru/download"
+                  target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color:#00ff41">Zoom</a>
+              </p>
+              <p class="text-gray-300 ml-4">- При першому підключенні (зайти вручну на будь-яку конференцію) відключити постійне прев'ю перед заходом на конференцію </p>
+              <p class="text-gray-300 ml-4">- У застосунку <b>Налаштування/Відео</b> поставити галочку навпроти пунктів
+                "☑️ Приховати своє відео", "☑️ Вимикати моє відео під час підключення" та "☑️ Всегда показати діалогове вікно попереднього перегляду при підключенні"</p>
+              <p class="text-gray-300 ml-4">- У застосунку <b>Налаштування/Звук</b> поставити галочку навпроти пункту
+                "☑️ Вимкнути звук мого мікрофона під час підключення" </p>
+                
+            </div>
+          </div>
+          <div class="accordion-item">
+            <span class="text-green-400">> Завантажити та розпакувати архів</span>
+            <div class="accordion-content">
+              <p class="text-gray-300 ml-4">- Можна зробити це за допомогою <a
+                  href="https://www.win-rar.com/start.html?&L=4" target="_blank" rel="noopener noreferrer"
+                  style="text-decoration: underline; color:#00ff41">WinRAR</a> або будь-якого іншого архіватора для
+                розпакування .zip файлів</p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <span class="text-green-400">> Встановити та налаштувати EduGhost_x.x.x.exe </span>
+            <div class="accordion-content">
+              <p class="text-gray-300 ml-4">- Де x — це поточна версія програми, яку ви заванатажили
+                <br>
+                - НЕ ЗАКРИВАТИ вікно консолі, це і є програма
+                <br>
+                - Дочекатися відкриття програми у вікні браузера
+                <br>
+                - Перейти на вкладку "Профіль":
+              <div class="text-gray-300 pl-10">
+                * Заповнити дані згідно зразку (без зайвих символів та пробілів)
+                <br> * Натиснути кнопку "Оновити дані"
+              </div>
+              </p>
+              <p class="text-gray-300 ml-4">
+                - Перейти і заповнити дані про Ваші дисципліни на вкладці "Посилання":
+              <div class="text-gray-300 pl-10">
+                * "Назва предмету" має співпадати(ІДЕНТИЧНО) з назвою на сайті <a href="rozklad.hneu.edu.ua"
+                  style="text-decoration: underline; color:#00ff41" target="_blank">rozklad.hneu.edu.ua</a>
+                  <br>
+                  * Можна додати тільки дані про лекцію/практику/лабораторну за зразком, а після вже редагувати на вкладці "Головна" вашу дисципліну (інакше вона не з'явиться на вкладці "Головна")
+                <br>
+                * Натиснути кнопку "Оновити дані"
+              </div>
+              </p>
+              <p class="text-gray-300 ml-4">
+                - Перейти на вкладку "Головна" і натиснути кнопку "Запустити", у консолі та на сайті буде відображено статус виконання програми, у разі помилки пишіть до <a href="https://t.me/maxim_burdenko" target="_blank"
+                class="text-green-400 hover:underline">@maxim_burdenko</a>
+              </p>
+              <br>
+            
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads Section -->
+  <section id="downloads" class="py-20 px-4 bg-gray-900">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
+        <span class="border-b-2 border-green-500 pb-2">Завантажити EduGhost</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+        <!-- Windows Download -->
+        <div class="terminal p-8 text-center">
+          <div class="text-green-400 text-5xl mb-6">
+            <i class="fab fa-windows"></i>
+          </div>
+          <h3 class="text-2xl font-bold mb-4 hacker-font">Windows версія</h3>
+          <p class="text-gray-300 mb-6">
+            Сумісний з Windows 10/11
+          </p>
+          <a href="https://github.com/maxim-burdenko/EduGhost_hneu/releases/download/EduGhost_hneu/EduGhost_hneu_0.1.1.zip"
+            class="download-btn inline-block bg-green-600 hover:bg-green-700 text-black font-bold py-3 px-8 rounded-full glow-box">
+            <i class="fas fa-download mr-2"></i> Завантажити (v0.1.1)
+          </a>
+          <div class="mt-4 text-sm text-gray-400">
+            <i class="fas fa-file-archive mr-1"></i> Архів EduGhsot_hneu_0.1.1.zip
+            <br>
+            <i class="fas fa-database mr-1"></i> Розмір: 31.2 MB
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal p-6 mt-8">
+        <h3 class="text-xl font-bold mb-4 text-green-400 hacker-font">Примітки щодо встановлення:</h3>
+        <div class="space-y-2 text-gray-300">
+          <p>ПК повинен працювати в увімкненому режимі для роботи програми. Щоб програма працювала, EduGhost не дає заснути вашому ПК.</p>
+          <p>
+            Можливо, знадобиться додати файл до виключень Вашого антивірусу. Результат VirusTotal можна побачити <a
+              href="https://www.virustotal.com/gui/file/d74035804fc55cbaec646666c38447dd50bc38dbc807025d7c01bf677ec53f11?nocache=1"
+              target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">тут</a>. Вихідний код
+            застосунку можна побачити <a href="https://github.com/maxim-burdenko/EduGhost_hneu" target="_blank"
+              rel="noopener noreferrer" style="text-decoration: underline;">тут</a>.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-20 px-4 bg-black">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
+        <span class="border-b-2 border-green-500 pb-2">Зв'язок з розробником</span>
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
+        <div class="terminal p-6 h-full">
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <div class="text-green-400 text-2xl w-10">
+                <i class="fab fa-github"></i>
+              </div>
+              <div>
+                <p class="text-gray-300">GitHub</p>
+                <a href="https://github.com/maxim-burdenko" target="_blank"
+                  class="text-green-400 hover:underline">github.com/maxim-burdenko</a>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="text-green-400 text-2xl w-10">
+                <i class="fab fa-telegram"></i>
+              </div>
+              <div>
+                <p class="text-gray-300">Telegram</p>
+                <a href="https://t.me/maxim_burdenko" target="_blank"
+                  class="text-green-400 hover:underline">@maxim_burdenko</a>
+                  <br>
+                
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div class="text-green-400 text-2xl w-10">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p class="text-gray-300">Email</p>
+                <a href="mailto:maxim.burdenko2@gmail.com" target="_blank"
+                  class="text-green-400 hover:underline">maxim.burdenko2@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 bg-gray-900 text-center">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-gray-400 flex justify-between items-center">
+   
+        <a href="https://github.com/maxim-burdenko/EduGhost/blob/main/LICENSE" target="_blank"
+          class="hover:text-green-400">
+          Офіційний Telegram-канал
+        </a>
+  
+    
+        <a href="https://t.me/+eakomq5AeJM0OWJi" target="_blank" rel="noopener noreferrer">
+          <div class="text-green-400 text-5xl">
+            <i class="fab fa-telegram"></i>
+          </div>
+         
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
