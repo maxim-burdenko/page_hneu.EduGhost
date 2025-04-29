@@ -1,316 +1,356 @@
 <!DOCTYPE html>
-<html lang="uk">
-
+<html lang="uk" class="!scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduGhsot</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            light: {
+              100: '#ffffff',
+              200: '#f8f9fa',
+              300: '#e9ecef',
+              400: '#dee2e6',
+              500: '#ced4da',
+            },
+            dark: {
+              900: '#0a0a0a',
+              800: '#121212',
+              700: '#1a1a1a',
+            },
+            primary: {
+              500: '#f59e0b',
+              600: '#d97706',
+            },
+            accent: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+            },
+            success: {
+              500: '#10b981',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 0.5s ease-out',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Source+Code+Pro:wght@300;400;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="css/style.css">
-
 </head>
+<body class="bg-light-200 text-gray-800 font-sans">
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
 
-<body>
   <!-- Loading Screen -->
-  <div id="loading" class="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
-    <div class="terminal w-100 h-12 p-4 mb-4 flex items-center">
-      <span class="text-green-400 preview-text">Ініціалізація EduGhost...</span>
-    </div>
-    <div class="bg-gray-800 rounded-full h-2.5 container-progressbar">
-      <div id="progress-bar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%"></div>
+  <div id="loading" class="fixed inset-0 bg-light-200 z-50 flex flex-col items-center justify-center dark:bg-dark-900">
+    <div class="w-full max-w-md px-6 py-8 glass-card dark:glass-card-dark rounded-xl">
+      <div class="flex items-center mb-6">
+        <div class="w-10 h-10 rounded-full bg-accent-500 flex items-center justify-center mr-4">
+          <i class="fas fa-ghost text-white"></i>
+        </div>
+        <h2 class="text-xl font-medium dark:text-gray-200">Ініціалізація EduGhost...</h2>
+      </div>
+      <div class="w-full bg-light-300 dark:bg-dark-700 rounded-full h-2 mb-4">
+        <div id="progress-bar" class="bg-accent-500 h-2 rounded-full" style="width: 0%"></div>
+      </div>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Завантаження системних модулів...</p>
     </div>
   </div>
 
   <!-- Main Content -->
   <div id="content" class="opacity-0 transition-opacity duration-500">
     <!-- Hero Section -->
-    <header
-      class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center bg-gradient-to-b from-black to-gray-900 overflow-hidden">
-      <div class="absolute top-0 left-0 w-full h-full opacity-20">
-        <div class="absolute top-0 left-0 w-full h-full bg-repeat"
-          style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMwMGZmMjkiPjwvcmVjdD4KPC9zdmc+');">
-        </div>
+
+    <!-- <header class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center bg-gradient-to-b from-light-200 to-light-300 dark:from-dark-900 dark:to-dark-800 overflow-hidden"> -->
+      <header class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 text-center bg-light-400 dark:bg-dark-700 overflow-hidden">
+
+      <div class="absolute opacity-70 dark:opacity-20">
+        <div class="absolute inset-0 bg-repeat" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjZTllY2VmIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmNTllMGIiPjwvcmVjdD4KPC9zdmc+');"></div>
       </div>
 
-      <div class="relative z-10 max-w-4xl mx-auto">
-
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text hacker-font">
-          <span class="typewriter block">EduGhost</span>
-        </h1>
-
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-          EduGhost — неведимка для онлайн-навчання, створений, щоб повністю автоматизувати відвідування
-          занять.
-          <span class="text-green-400"> Додаток самостійно приєднується до уроків у Zoom та фіксує Вашу
-            присутність у PNS.</span>
-        </p>
+      <div class="relative z-10 max-w-4xl mx-auto px-4">
+        <div class="mb-8">
+          <div class="w-24 h-24 rounded-full bg-light-100 dark:bg-dark-800 border-2 border-accent-500 flex items-center justify-center mx-auto mb-6 animate-float">
+            <i class="fas fa-ghost text-4xl text-accent-500"></i>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-bold mb-6 dark:text-gray-200">
+            <span class="typewriter block bg-gradient-to-r from-accent-500 to-primary-500 gradient-text">EduGhost</span>
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-600 dark:text-gray-300">
+            Автоматизована система для онлайн-навчання, яка самостійно приєднується до занять у Zoom та фіксує вашу присутність у PNS.
+          </p>
+        </div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-12">
-          <a href="#downloads"
-            class="download-btn bg-green-600 hover:bg-green-700 text-black font-bold py-3 px-6 rounded-full glow-box pulse">
+          <a href="#downloads" class="bg-accent-500 hover:bg-accent-400 text-dark-900 font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center shadow-lg hover:shadow-xl hover:-translate-y-1">
             <i class="fas fa-download mr-2"></i> Завантажити
           </a>
-          <a href="#features"
-            class="download-btn border-2 border-green-500 hover:bg-green-900/30 text-green-400 font-bold py-3 px-6 rounded-full">
-            <i class="fas fa-terminal mr-2"></i> Оглянути функції
+          <a href="#features" class="border-2 border-accent-500 text-accent-500 hover:bg-light-400 dark:hover:bg-dark-700 font-medium py-3 px-6 rounded-lg transition-all duration-300 flex items-center hover:shadow-lg">
+            <i class="fas fa-list-check mr-2"></i> Функції
           </a>
         </div>
       </div>
-  </div>
 
-  <div class="scroll-indicator">
-    <i class="fas fa-chevron-down text-green-400 text-2xl"></i>
-  </div>
-  </header>
-
-  <!-- Features Section -->
-  <section id="features" class="py-20 px-4 bg-gray-900">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center hacker-font glow-text">
-        <span class="border-b-2 border-green-500 pb-2">Основні функціх</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="terminal p-6 h-full">
-          <div class="text-green-400 text-4xl mb-4">
-            <i class="fas fa-highlighter"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 hacker-font">Відмітка присутності</h3>
-          <p class="text-gray-300">
-            Поставить відмітку про присутність на парі на пнс
-          </p>
-        </div>
-
-        <div class="terminal p-6 h-full">
-          <div class="text-green-400 text-4xl mb-4">
-            <i class="fas fa-video"></i>
-          </div>
-          <h3 class="text-xl font-bold mb-3 hacker-font">Zoom</h3>
-          <p class="text-gray-300">
-            Підключається до Zoom конференції під Вашим ім'ям згідно Вашому розкладу
-          </p>
-        </div>
+      <div class="scroll-indicator absolute bottom-10 left-1/2 transform -translate-x-1/2">
+        <i class="fas fa-chevron-down text-accent-500 text-2xl"></i>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Instructions Section -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
-        <span class="border-b-2 border-green-500 pb-2">Інструкція з експлуатації</span>
-      </h2>
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4 bg-light-300 dark:bg-dark-800">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center dark:text-gray-200">
+          <span class="pb-2 border-b-2 border-accent-500">RoadMap</span>
+        </h2>
 
-      <div class="terminal p-6 mb-8">
-        <div class="space-y-4">
-          <div class="accordion-item">
-            <span class="text-green-400">> Завантажити та встановити останню версію браузера FireFox</span>
-            <div class="accordion-content">
-              <p class="text-gray-300 ml-4">- ОБОВ`ЯЗКОВО необхідно завантажити саме цей браузер, без нього не буде
-                працювати програма <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank"
-                  rel="noopener noreferrer" style="text-decoration:underline; color:#00ff41">Firefox</a>
-                
-                <div class="ml-4 text-yellow-400"><i class="fas fa-exclamation-triangle mr-2"></i>
-                  Рекомендовано одразу прибрати автоматичне оновлення для Firefox, оскільки воно може заважати працювати
-                  роботі скрипту
-                </div>
-                
-                <br>
-              </p>
-              <p style="font-style:italic;" class="text-gray-300 ml-4">
-
-                <b>Firefox</b> потрібен виключно як встановлений застосунок, подальша робота буде виконуватися в
-                браузері, який вам зручний
-              </p>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <span class="text-green-400">> Завантажити та налаштувати останню версію Zoom</span>
-            <div class="accordion-content">
-              <p class="text-gray-300 ml-4">- Необхідно завантажити додаток <a href="https://zoom.us/ru/download"
-                  target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color:#00ff41">Zoom</a>
-              </p>
-              <p class="text-gray-300 ml-4">- При першому підключенні (зайти вручну на будь-яку конференцію) відключити постійне прев'ю перед заходом на конференцію </p>
-              <p class="text-gray-300 ml-4">- У застосунку <b>Налаштування/Відео</b> поставити галочку навпроти пунктів
-                "☑️ Приховати своє відео", "☑️ Вимикати моє відео під час підключення" та "☑️ Всегда показати діалогове вікно попереднього перегляду при підключенні"</p>
-              <p class="text-gray-300 ml-4">- У застосунку <b>Налаштування/Звук</b> поставити галочку навпроти пункту
-                "☑️ Вимкнути звук мого мікрофона під час підключення" </p>
-                
-            </div>
-          </div>
-          <div class="accordion-item">
-            <span class="text-green-400">> Завантажити та розпакувати архів</span>
-            <div class="accordion-content">
-              <p class="text-gray-300 ml-4">- Можна зробити це за допомогою <a
-                  href="https://www.win-rar.com/start.html?&L=4" target="_blank" rel="noopener noreferrer"
-                  style="text-decoration: underline; color:#00ff41">WinRAR</a> або будь-якого іншого архіватора для
-                розпакування .zip файлів</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <span class="text-green-400">> Встановити та налаштувати EduGhost_x.x.x.exe </span>
-            <div class="accordion-content">
-              <p class="text-gray-300 ml-4">- Де x — це поточна версія програми, яку ви заванатажили
-                <br>
-                - НЕ ЗАКРИВАТИ вікно консолі, це і є програма
-                <br>
-                - Дочекатися відкриття програми у вікні браузера
-                <br>
-                - Перейти на вкладку "Профіль":
-              <div class="text-gray-300 pl-10">
-                * Заповнити дані згідно зразку (без зайвих символів та пробілів)
-                <br> * Натиснути кнопку "Оновити дані"
-              </div>
-              </p>
-              <p class="text-gray-300 ml-4">
-                - Перейти і заповнити дані про Ваші дисципліни на вкладці "Посилання":
-              <div class="text-gray-300 pl-10">
-                * "Назва предмету" має співпадати(ІДЕНТИЧНО) з назвою на сайті <a href="rozklad.hneu.edu.ua"
-                  style="text-decoration: underline; color:#00ff41" target="_blank">rozklad.hneu.edu.ua</a>
-                  <br>
-                  * Можна додати тільки дані про лекцію/практику/лабораторну за зразком, а після вже редагувати на вкладці "Головна" вашу дисципліну (інакше вона не з'явиться на вкладці "Головна")
-                <br>
-                * Натиснути кнопку "Оновити дані"
-              </div>
-              </p>
-              <p class="text-gray-300 ml-4">
-                - Перейти на вкладку "Головна" і натиснути кнопку "Запустити", у консолі та на сайті буде відображено статус виконання програми, у разі помилки пишіть до <a href="https://t.me/maxim_burdenko" target="_blank"
-                class="text-green-400 hover:underline">@maxim_burdenko</a>
-              </p>
-              <br>
-            
-              </p>
-            </div>
+        <div class="roadmap-container" id="roadmap">
+          <div class="roadmap-mobile-split">
+            <!-- Stages will be inserted here by JavaScript -->
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Downloads Section -->
-  <section id="downloads" class="py-20 px-4 bg-gray-900">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
-        <span class="border-b-2 border-green-500 pb-2">Завантажити EduGhost</span>
-      </h2>
+    <!-- Instructions Section -->
+    <section class="py-20 px-4 bg-light-200 dark:bg-dark-900">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center dark:text-gray-200">
+          <span class="pb-2 border-b-2 border-accent-500">Інструкція з експлуатації</span>
+        </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-        <!-- Windows Download -->
-        <div class="terminal p-8 text-center">
-          <div class="text-green-400 text-5xl mb-6">
-            <i class="fab fa-windows"></i>
-          </div>
-          <h3 class="text-2xl font-bold mb-4 hacker-font">Windows версія</h3>
-          <p class="text-gray-300 mb-6">
-            Сумісний з Windows 10/11
-          </p>
-          <a href="https://github.com/maxim-burdenko/EduGhost_hneu/releases/download/EduGhost_hneu/EduGhost_hneu_0.1.1.zip"
-            class="download-btn inline-block bg-green-600 hover:bg-green-700 text-black font-bold py-3 px-8 rounded-full glow-box">
-            <i class="fas fa-download mr-2"></i> Завантажити (v0.1.1)
-          </a>
-          <div class="mt-4 text-sm text-gray-400">
-            <i class="fas fa-file-archive mr-1"></i> Архів EduGhsot_hneu_0.1.1.zip
-            <br>
-            <i class="fas fa-database mr-1"></i> Розмір: 31.2 MB
-          </div>
-        </div>
-      </div>
-
-      <div class="terminal p-6 mt-8">
-        <h3 class="text-xl font-bold mb-4 text-green-400 hacker-font">Примітки щодо встановлення:</h3>
-        <div class="space-y-2 text-gray-300">
-          <p>ПК повинен працювати в увімкненому режимі для роботи програми. Щоб програма працювала, EduGhost не дає заснути вашому ПК.</p>
-          <p>
-            Можливо, знадобиться додати файл до виключень Вашого антивірусу. Результат VirusTotal можна побачити <a
-              href="https://www.virustotal.com/gui/file/d74035804fc55cbaec646666c38447dd50bc38dbc807025d7c01bf677ec53f11?nocache=1"
-              target="_blank" rel="noopener noreferrer" style="text-decoration: underline;">тут</a>. Вихідний код
-            застосунку можна побачити <a href="https://github.com/maxim-burdenko/EduGhost_hneu" target="_blank"
-              rel="noopener noreferrer" style="text-decoration: underline;">тут</a>.
-          </p>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="py-20 px-4 bg-black">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center hacker-font glow-text">
-        <span class="border-b-2 border-green-500 pb-2">Зв'язок з розробником</span>
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-1 gap-8">
-        <div class="terminal p-6 h-full">
+        <div class="glass-card dark:glass-card-dark p-6 rounded-xl">
           <div class="space-y-4">
-            <div class="flex items-center">
-              <div class="text-green-400 text-2xl w-10">
-                <i class="fab fa-github"></i>
+            <div class="accordion-item p-4 rounded-lg bg-light-100 dark:bg-dark-800 hover:bg-light-200 dark:hover:bg-dark-700 transition-colors cursor-pointer">
+              <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-light-200 dark:bg-dark-700 flex items-center justify-center mr-3">
+                  <i class="fas fa-download text-accent-500"></i>
+                </div>
+                <span class="font-medium dark:text-gray-200">Завантажити та встановити Firefox</span>
+                <i class="fas fa-chevron-down ml-auto text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
               </div>
-              <div>
-                <p class="text-gray-300">GitHub</p>
-                <a href="https://github.com/maxim-burdenko" target="_blank"
-                  class="text-green-400 hover:underline">github.com/maxim-burdenko</a>
+              <div class="accordion-content mt-3 pl-11">
+                <p class="text-gray-600 dark:text-gray-300">- ОБОВ'ЯЗКОВО необхідно завантажити саме цей браузер</p>
+                <a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" class="text-accent-500 hover:underline inline-block mt-2">
+                  <i class="fas fa-external-link-alt mr-1"></i> Завантажити Firefox
+                </a>
+                <div class="bg-light-200 dark:bg-dark-700 p-3 rounded-lg mt-3 flex items-start">
+                  <i class="fas fa-exclamation-triangle text-yellow-400 mt-1 mr-2"></i>
+                  <p class="text-yellow-600 dark:text-yellow-400">Рекомендовано вимкнути автоматичне оновлення Firefox</p>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400 italic mt-3">
+                  Firefox потрібен виключно як встановлений застосунок, подальша робота буде виконуватися в будь-якому зручному для вас браузері.
+                </p>
               </div>
             </div>
-            <div class="flex items-center">
-              <div class="text-green-400 text-2xl w-10">
-                <i class="fab fa-telegram"></i>
+
+            <div class="accordion-item p-4 rounded-lg bg-light-100 dark:bg-dark-800 hover:bg-light-200 dark:hover:bg-dark-700 transition-colors cursor-pointer">
+              <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-light-200 dark:bg-dark-700 flex items-center justify-center mr-3">
+                  <i class="fas fa-video text-accent-500"></i>
+                </div>
+                <span class="font-medium dark:text-gray-200">Завантажити та налаштувати Zoom</span>
+                <i class="fas fa-chevron-down ml-auto text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
               </div>
-              <div>
-                <p class="text-gray-300">Telegram</p>
-                <a href="https://t.me/maxim_burdenko" target="_blank"
-                  class="text-green-400 hover:underline">@maxim_burdenko</a>
-                  <br>
-                
+              <div class="accordion-content mt-3 pl-11">
+                <p class="text-gray-600 dark:text-gray-300">- Завантажити офіційний додаток Zoom</p>
+                <a href="https://zoom.us/ru/download" target="_blank" class="text-accent-500 hover:underline inline-block mt-2">
+                  <i class="fas fa-external-link-alt mr-1"></i> Завантажити Zoom
+                </a>
+                <p class="text-gray-600 dark:text-gray-300 mt-3">- У налаштуваннях відео активувати:</p>
+                <ul class="list-disc list-inside text-gray-500 dark:text-gray-400 ml-4 mt-2 space-y-1">
+                  <li>Приховати своє відео</li>
+                  <li>Виключати відео при підключенні</li>
+                </ul>
+                <p class="text-gray-600 dark:text-gray-300 mt-3">- У налаштуваннях звуку активувати:</p>
+                <ul class="list-disc list-inside text-gray-500 dark:text-gray-400 ml-4 mt-2 space-y-1">
+                  <li>Вимкнути звук мікрофона при підключенні</li>
+                </ul>
               </div>
             </div>
-            <div class="flex items-center">
-              <div class="text-green-400 text-2xl w-10">
-                <i class="fas fa-envelope"></i>
+
+            <div class="accordion-item p-4 rounded-lg bg-light-100 dark:bg-dark-800 hover:bg-light-200 dark:hover:bg-dark-700 transition-colors cursor-pointer">
+              <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-light-200 dark:bg-dark-700 flex items-center justify-center mr-3">
+                  <i class="fas fa-file-archive text-accent-500"></i>
+                </div>
+                <span class="font-medium dark:text-gray-200">Завантажити та розпакувати архів</span>
+                <i class="fas fa-chevron-down ml-auto text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
               </div>
-              <div>
-                <p class="text-gray-300">Email</p>
-                <a href="mailto:maxim.burdenko2@gmail.com" target="_blank"
-                  class="text-green-400 hover:underline">maxim.burdenko2@gmail.com</a>
+              <div class="accordion-content mt-3 pl-11">
+                <p class="text-gray-600 dark:text-gray-300">- Використовуйте WinRAR або інший архіватор</p>
+                <a href="https://www.win-rar.com/start.html?&L=4" target="_blank" class="text-accent-500 hover:underline inline-block mt-2">
+                  <i class="fas fa-external-link-alt mr-1"></i> Завантажити WinRAR
+                </a>
+              </div>
+            </div>
+
+            <div class="accordion-item p-4 rounded-lg bg-light-100 dark:bg-dark-800 hover:bg-light-200 dark:hover:bg-dark-700 transition-colors cursor-pointer">
+              <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-light-200 dark:bg-dark-700 flex items-center justify-center mr-3">
+                  <i class="fas fa-cog text-accent-500"></i>
+                </div>
+                <span class="font-medium dark:text-gray-200">Налаштувати EduGhost</span>
+                <i class="fas fa-chevron-down ml-auto text-gray-500 dark:text-gray-400 transition-transform duration-300"></i>
+              </div>
+              <div class="accordion-content mt-3 pl-11">
+                <p class="text-gray-600 dark:text-gray-300">- Не закривайте вікно консолі - це і є програма</p>
+                <p class="text-gray-600 dark:text-gray-300 mt-2">- Заповніть дані у вкладці "Профіль":</p>
+                <ul class="list-disc list-inside text-gray-500 dark:text-gray-400 ml-4 mt-2 space-y-1">
+                  <li>Введіть точні дані без зайвих символів</li>
+                  <li>Натисніть "Оновити дані"</li>
+                </ul>
+                <p class="text-gray-600 dark:text-gray-300 mt-3">- Додайте дисципліни у вкладці "Посилання":</p>
+                <ul class="list-disc list-inside text-gray-500 dark:text-gray-400 ml-4 mt-2 space-y-1">
+                  <li>Назви мають точно співпадати з розкладом</li>
+                  <li>Додавайте тільки лекції/практики/лабораторні</li>
+                </ul>
+                <p class="text-gray-600 dark:text-gray-300 mt-3">- На вкладці "Головна" натисніть "Запустити"</p>
+                <div class="bg-light-200 dark:bg-dark-700 p-3 rounded-lg mt-3">
+                  <p class="text-gray-600 dark:text-gray-300">У разі виникнення проблем звертайтеся до <a href="https://t.me/maxim_burdenko" target="_blank" class="text-accent-500 hover:underline">@maxim_burdenko</a></p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="py-12 px-4 bg-gray-900 text-center">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-gray-400 flex justify-between items-center">
-   
-        <a href="https://github.com/maxim-burdenko/EduGhost/blob/main/LICENSE" target="_blank"
-          class="hover:text-green-400">
-          Офіційний Telegram-канал
-        </a>
-  
-    
-        <a href="https://t.me/+eakomq5AeJM0OWJi" target="_blank" rel="noopener noreferrer">
-          <div class="text-green-400 text-5xl">
-            <i class="fab fa-telegram"></i>
+    <!-- Downloads Section -->
+    <section id="downloads" class="py-20 px-4 bg-light-300 dark:bg-dark-800">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center dark:text-gray-200">
+          <span class="pb-2 border-b-2 border-accent-500">Завантажити EduGhost</span>
+        </h2>
+
+        <div class="glass-card dark:glass-card-dark p-8 rounded-xl">
+          <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/3 flex justify-center mb-6 md:mb-0">
+              <div class="w-24 h-24 rounded-full bg-light-100 dark:bg-dark-700 border-2 border-accent-500 flex items-center justify-center">
+                <i class="fab fa-windows text-4xl text-accent-500"></i>
+              </div>
+            </div>
+            <div class="md:w-2/3 text-center md:text-left">
+              <h3 class="text-2xl font-bold mb-2 dark:text-gray-200">Windows версія</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Сумісна з Windows 10/11</p>
+              <a href="https://github.com/maxim-burdenko/EduGhost_hneu/releases/download/EduGhost_hneu/EduGhost_hneu_0.1.1.zip" class="inline-block bg-accent-500 hover:bg-accent-400 text-dark-900 font-medium py-3 px-8 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                <i class="fas fa-download mr-2"></i> Завантажити (v0.1.1)
+              </a>
+              <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                <div class="flex items-center justify-center md:justify-start space-x-4">
+                  <span><i class="fas fa-file-archive mr-1"></i> EduGhsot_hneu_0.1.1.zip</span>
+                  <span><i class="fas fa-database mr-1"></i> 31.2 MB</span>
+                </div>
+              </div>
+            </div>
           </div>
-         
-        </a>
-      </div>
-    </div>
-  </footer>
+        </div>
 
+        <div class="glass-card dark:glass-card-dark p-6 mt-8 rounded-xl">
+          <h3 class="text-xl font-bold mb-4 text-accent-500">Примітки щодо встановлення:</h3>
+          <div class="space-y-4 text-gray-600 dark:text-gray-300">
+            <p>Програма потребує постійної роботи ПК. EduGhost запобігає переходу комп'ютера у режим сну.</p>
+            <p>
+              Можливо, знадобиться додати файл до виключень вашого антивірусу. 
+              <a href="https://www.virustotal.com/gui/file/d74035804fc55cbaec646666c38447dd50bc38dbc807025d7c01bf677ec53f11?nocache=1" target="_blank" class="text-accent-500 hover:underline">Результати VirusTotal</a>.
+              Вихідний код доступний на <a href="https://github.com/maxim-burdenko/EduGhost_hneu" target="_blank" class="text-accent-500 hover:underline">GitHub</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 px-4 bg-light-200 dark:bg-dark-900">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center dark:text-gray-200">
+          <span class="pb-2 border-b-2 border-accent-500">Зв'язок з розробником</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="glass-card dark:glass-card-dark p-6 rounded-xl hover:bg-light-100 dark:hover:bg-dark-800 transition-colors">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-light-100 dark:bg-dark-800 flex items-center justify-center mr-4">
+                <i class="fab fa-github text-2xl text-accent-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium dark:text-gray-200">GitHub</h3>
+                <a href="https://github.com/maxim-burdenko" target="_blank" class="text-accent-500 hover:underline text-sm">github.com/maxim-burdenko</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card dark:glass-card-dark p-6 rounded-xl hover:bg-light-100 dark:hover:bg-dark-800 transition-colors">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-light-100 dark:bg-dark-800 flex items-center justify-center mr-4">
+                <i class="fab fa-telegram text-2xl text-accent-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium dark:text-gray-200">Telegram</h3>
+                <a href="https://t.me/maxim_burdenko" target="_blank" class="text-accent-500 hover:underline text-sm">@maxim_burdenko</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card dark:glass-card-dark p-6 rounded-xl hover:bg-light-100 dark:hover:bg-dark-800 transition-colors">
+            <div class="flex items-center">
+              <div class="w-12 h-12 rounded-full bg-light-100 dark:bg-dark-800 flex items-center justify-center mr-4">
+                <i class="fas fa-envelope text-2xl text-accent-500"></i>
+              </div>
+              <div>
+                <h3 class="font-medium dark:text-gray-200">Email</h3>
+                <a href="mailto:maxim.burdenko2@gmail.com" lang="en" target="_blank" class="text-accent-500 hover:underline text-sm" style="hyphens: auto;">maxim.burdenko2@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-light-300 dark:bg-dark-800 text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <a href="https://github.com/maxim-burdenko/EduGhost/blob/main/LICENSE" target="_blank" class="text-gray-500 dark:text-gray-400 hover:text-accent-500 mb-4 md:mb-0">
+            Ліцензія
+          </a>
+          <a href="https://t.me/+eakomq5AeJM0OWJi" target="_blank" class="text-accent-500 hover:text-accent-400 text-3xl">
+            <i class="fab fa-telegram"></i>
+          </a>
+          <p class="text-gray-500 dark:text-gray-400 mt-4 md:mt-0">
+            © 2025 EduGhost
+          </p>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <script src="js/script.js"></script>
 </body>
-
 </html>
