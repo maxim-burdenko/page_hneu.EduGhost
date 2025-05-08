@@ -381,6 +381,10 @@
   font-size: 20px;
 }
 
+.beta-banner {
+  background: linear-gradient(135deg, #ca8a04 0%, #eab308 100%);
+}
+
 /* Mobile roadmap styles */
 @media (max-width: 768px) {
   h2{

@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const loadingScreen = document.getElementById('loading');
   const content = document.getElementById('content');
 
+
+
   const interval = setInterval(() => {
     progress += Math.random() * 10;
     if (progress > 100) progress = 100;
